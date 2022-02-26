@@ -20,12 +20,11 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->database();
+		$this->load->library('mongo_db');
 
-		$query = $this->db->query('SELECT * FROM users');
-		$row  = $query->row();
- 
-        $data['firstname'] = $row->name;
+		$username = $this->mongo_db->select(array('name'))->get('users');
+
+        $data['firstname'] = 'test';
 
 		$this->load->view('admin/login',$data);
 	}

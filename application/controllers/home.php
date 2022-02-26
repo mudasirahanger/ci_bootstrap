@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 	{
 
         $data['page_title'] = 'Home Page';
+        $this->load->library('mongo_db');
 
 		$this->load->view('common/header',$data);
 		$this->load->view('common/home',$data);
